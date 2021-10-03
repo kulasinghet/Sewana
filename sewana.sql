@@ -248,7 +248,7 @@ INSERT INTO `newspaper` (`Newspaper_Id`, `Name`, `Address`, `EMail`, `Contact_Nu
 
 DROP TABLE IF EXISTS `person`;
 CREATE TABLE IF NOT EXISTS `person` (
-  `NIC` int(9) NOT NULL,
+  `NIC` char(12) NOT NULL,
   `Name` varchar(200) DEFAULT NULL,
   `Address` varchar(200) DEFAULT NULL,
   `Email` varchar(100) DEFAULT NULL,

@@ -1,4 +1,9 @@
 # Privileges for `Client`@`localhost`
+USE sewana;
+CREATE USER 'Client'@'localhost' IDENTIFIED BY 'client123';
+CREATE USER 'Manager'@'localhost' IDENTIFIED BY 'manager123';
+CREATE USER 'Owner'@'localhost' IDENTIFIED BY 'owner123';
+CREATE USER 'Employee'@'localhost' IDENTIFIED BY 'employee123';
 
 GRANT USAGE ON *.* TO 'Client'@'localhost';
 

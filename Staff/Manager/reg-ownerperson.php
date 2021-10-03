@@ -2,8 +2,15 @@
 if(!isset($_SESSION['Email'])){
    header("Location: /Sewana/login.php");
 }//checks if the user has logged in
-
-$conn=new mysqli("localhost","Manager","manager123","Sewana");
+if($_SESSION['type']=="manager"){
+    $conn=new mysqli("localhost","Manager","manager123","Sewana");
+}
+else if($_SESSION['type']=="admin"){
+    $conn=new mysqli("localhost","root","","Sewana");
+}
+else{
+    header("Location: /Sewana/index.php");
+}
 if(!$conn){
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -114,43 +121,42 @@ if(!$conn){
                     VALUES ('$branchID')";
                     $result=$conn->query($query);
                     if($result){
-                                echo '<br>Owner Added';
-                            }
-                            else{
-                                echo '<br>Oops, something went wrong';
-                                echo("Error description: " . mysqli_error($conn));
-                            }
-
-                            $lastid=0;
-                            $query1="SELECT MAX(Owner_Id) FROM property_owner";
-                            $result=$conn->query($query1);
-                            if($result->num_rows<1){
-                                echo "Sorry, It's Empty";
-                            }
-                            else{
-                                while ($row=$result->fetch_assoc()){
-                                    $ID=$row['Owner_Id'];
-                                }
-                                
-                                $query2="INSERT INTO person VALUES('$NIC','$name','$address','$email','$contact','$ID')";
-                                $quesry3="INSERT INTO userlogin VALUES('$email','$pass')";
-                                $result2=$conn->query($query2);
-                                $result3=$conn->query($query3);
-                                if($result2){
-                                    echo '<br>Person table updated';
-                            }
-                            else{
-                                echo '<br>Oops, something went wrong';
-                                echo("Error description: " . mysqli_error($conn));
-                            }
-                            if($result3){
-                                echo '<br>Person table updated';
-                            }
-                            else{
-                                echo '<br>Oops, something went wrong';
-                                echo("Error description: " . mysqli_error($conn));
-                            }
-                            }
+                        echo '<br>Owner Added';
+                    }
+                    else{
+                            echo '<br>Oops, something went wrong';
+                            echo("Error description: " . mysqli_error($conn));
+                    }
+                    $lastid=0;
+                    $query1="SELECT MAX(Owner_Id) FROM property_owner";
+                    $result=$conn->query($query1);
+                    if($result->num_rows<1){
+                        echo "Sorry, It's Empty";
+                    }
+                    else{
+                        while ($row=$result->fetch_assoc()){
+                            $ID=$row['MAX(Owner_Id)'];
+                        }
+                        $query2="INSERT INTO person VALUES('$NIC','$name','$address','$email','$contact','$ID')";
+                        echo $query2."<br/>";
+                        $query3="INSERT INTO userlogin VALUES('$email','$pass')";
+                        $result2=$conn->query($query2);
+                        $result3=$conn->query($query3);
+                        if($result2){
+                            echo '<br>Person table updated';
+                        }
+                        else{
+                            echo '<br>Oops, something went wrong';
+                            echo("Error description: " . mysqli_error($conn));
+                        } 
+                        if($result3){
+                            echo '<br>User table updated';
+                        }
+                        else{
+                            echo '<br>Oops, something went wrong';
+                            echo("Error description: " . mysqli_error($conn));
+                        }
+                    }
 
                             
                 }

@@ -2,8 +2,15 @@
 if(!isset($_SESSION['Email'])){
    header("Location: /Sewana/login.php");
 }//checks if the user has logged in
-
-$conn=new mysqli("localhost","Manager","manager123","Sewana");
+if($_SESSION['type']=="manager"){
+    $conn=new mysqli("localhost","Manager","manager123","Sewana");
+}
+else if($_SESSION['type']=="admin"){
+    $conn=new mysqli("localhost","root","","Sewana");
+}
+else{
+    header("Location: /Sewana/index.php");
+}
 if(!$conn){
     die("Connection failed: " . mysqli_connect_error());
 }
