@@ -1,0 +1,24 @@
+.items-start{
+    place-items:center;
+}
+form{
+    width:70%;
+}
+
+.form-control{
+    margin-bottom: 2vh;
+    height: 3rem;
+}
+
+input[type=submit]{
+    cursor: pointer;
+}
+
+.p-3{
+    width: 100%;
+}
+
+footer{
+    text-align: center;
+    /* width: 100%; */
+}
