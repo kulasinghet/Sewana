@@ -110,22 +110,44 @@ if(!$conn){
                 </form>
                 <?php
                 if (isset($_POST['submit'])){
-                    $NIC=addslashes($_POST['NIC']);
-                    $name=addslashes($_POST['name']);
-                    $email=addslashes($_POST['email']);
-                    $regDate=addslashes($_POST['regDate']);
-                    $empID=addslashes($_POST['empID']);
+                    $name=addslashes($_POST['Name']);
+                    $email=addslashes($_POST['Email']);
+                    $address=addslashes($_POST['Address']);
+                    $contact=addslashes($_POST['contact']);
                     $branchID=addslashes($_POST['branchID']);
+                    $pwd = addslashes($_POST['pass']);
                     $query="INSERT INTO property_owner (Branch_Id)
                     VALUES ('$branchID')";
                     $result=$conn->query($query);
-                    if($result==1){
+                    if($result){
                                 echo '<br>Owner Added';
                             }
-                            else{
+                    else{
                                 echo '<br>Oops, something went wrong';
                                 echo("Error description: " . mysqli_error($conn));
-                            }
+                    }
+                    $query1 = "SELECT MAX(Owner_Id) from property_owner";
+                    $result1 = $conn->query($query1);
+                    while($row = $result1->fetch_assoc()){
+                        $ID = $row['MAX(Owner_Id)'];
+                    }
+                    $query2="INSERT INTO company (Name,Address,Email,Contact_number,Owner_Id) VALUES('$name','$address','$email','$contact','$ID')";
+                    $query3 = "INSERT INTO userlogin VALUES ('$email','$pwd');";
+                    $result3 = $conn->query($query3);
+                    if($result3){
+                        echo "User Added <br/>";
+                    }
+                    else{
+                        echo "Oops.. Something went wrong<br/>";
+                    }
+                    $result2= $conn -> query($query2);
+                    if($result2){
+                        echo "Company Added<br/>";
+                    }
+                    else{
+                        echo "Opps.. Something went wrong<br/>";
+                    }
+                    $conn->close();
                 }
                 ?>
             </div>
