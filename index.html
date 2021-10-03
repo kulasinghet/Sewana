@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="/Sewana/Assests/CSS/bootstrap.css" rel="stylesheet" />
+
+    <title>Home</title>
+    <style>
+        body { 
+            background: url('/Sewana/Assests/Images/house-isolated-field.jpg') no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .text-4xl{
+            padding-top: 10vh;
+        }
+        .w-screen{
+            padding-top: 0;
+            margin-top: -15vh;
+        }
+        .p-3{
+            text-decoration: none;
+            text-align:center;
+            border-radius: 5px;
+            margin-top: 1vh;
+        }
+        .p-3 a button{
+            margin-right: 20px;
+            margin-left: 20px;
+            margin-top: 20px;
+            font-weight:bold;
+        }
+        .p-3 p{
+            background-color:rgba(0, 0, 0, 0.4);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="./index.php">
+            <button type="button" class="btn btn-secondary">Sewana</button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page">Welcome to Sewana Renters</a>
+                </div>
+            </div>
+    </div>
+</nav>
+
+<div class="bg-image d-flex justify-content-center align-items-center">
+
+    <div class="container align-items-center">
+        <div class="row height d-flex justify-content-center align-items-center">
+        
+            <div class="col-md-8 p-3">
+            <img src="/Sewana/Assests/Images/Sewana-logos_black2.png" width="250px" height="250px"/><br><br>
+                <p>Sewana specializes in property management, taking an intermediate role between owners 
+who wish to rent out their furnished property and clients of Sewana who require to rent furnished 
+property for a fixed period.</p><br><br>
+                <a href="Database/loginclient.php" style="text-decoration: none;width:100%;"><button class="btn-outline-primary p-3 align-items-center">Client Login</button></a>
+                <a href="/Sewana/Database/loginowner.php" style="text-decoration: none;width:100%;"><button class="btn-outline-primary p-3 align-items-center">Owner Login</button></a>
+                <a href="Staff/staffportal.php" style="text-decoration: none;width:100%;"><button class="btn-outline-primary p-3 align-items-center">Employee Login</button></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+<!-- Background image -->
+
+<footer>
+<hr>
+<span>&copy; 2021 Group 00 | All rights reserved</span>
+</footer>
+<br>
+<br>
+</html>
