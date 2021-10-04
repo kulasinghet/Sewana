@@ -3,17 +3,14 @@ if(!isset($_SESSION['Email'])){
    header("Location: /Sewana/login.php");
 }//checks if the user has logged in
 
-if($_SESSION['type']!="manager"){
-        if($_SESSION['type']!="admin"){
-            header("Location: /Sewana/index.php");
-        }
-}
-
 if($_SESSION['type']=="manager"){
     $conn=new mysqli("localhost","Manager","manager123","Sewana");
 }
-elseif($_SESSION['type']=="admin"){
+else if($_SESSION['type']=="admin"){
     $conn=new mysqli("localhost","root","","Sewana");
+}
+else{
+    header("Location: /Sewana/index.php");
 }
 
 if(!$conn){
